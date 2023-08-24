@@ -1,4 +1,3 @@
-# input is name of the function
 import os
 from pprint import pprint
 from typing import List, Optional
@@ -26,11 +25,13 @@ def scan_directory(directory: str, exclude: Optional[List[str]] = None) -> List[
                 files_list.append(file_path)
     return files_list
 
-def is_function_defined(file_path: str):
+def read_file(file_path: str):
     with open(file_path, 'r') as file:
-        content = file.read()
-        return 
-
+        return file.readlines()
+        
+def find_func():
+    return 0
+        
 if __name__ == '__main__':
     pprint(
         scan_directory(
@@ -38,5 +39,6 @@ if __name__ == '__main__':
             exclude=["venv", "tests"]
         )
     )
-    # scan function should return not a filenames but an absolute paths
+    # python -m pytest
+    # scan function should return not a filenames but an absolute paths 
     # create function that reads a file and check if function is defined in the file https://www.dataquest.io/blog/read-file-python/

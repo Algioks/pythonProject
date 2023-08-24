@@ -22,14 +22,19 @@ def scan_directory(directory: str, exclude: Optional[List[str]] = None) -> List[
 
         for file in files:
             if file.endswith(".py"):
-                files_list.append(file)
+                file_path = os.path.join(root, file)
+                files_list.append(file_path)
     return files_list
 
+def is_function_defined(file_path: str):
+    with open(file_path, 'r') as file:
+        content = file.read()
+        return 
 
 if __name__ == '__main__':
     pprint(
         scan_directory(
-            directory=r"C:\Users\andrius.vaitkunas\PycharmProjects\pythonProject",
+            directory=r"C:\Programming Projects\pythonProject",
             exclude=["venv", "tests"]
         )
     )

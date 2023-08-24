@@ -40,5 +40,14 @@ if __name__ == '__main__':
         )
     )
     # python -m pytest
-    # scan function should return not a filenames but an absolute paths 
+        # leson 2
+
+    # scan function should return not a filenames but an absolute paths
+
     # create function that reads a file and check if function is defined in the file https://www.dataquest.io/blog/read-file-python/
+
+    # leson 3
+
+    # two separate functions to get func defenitions and func calls.
+
+    # add argparser to input the project path.

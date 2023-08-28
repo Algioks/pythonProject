@@ -48,20 +48,26 @@ def find_defined_functions(file_content: str) -> List[str]:
         print(f"Error while finding defined functions: {e}")
     return defined_functions
 
-if __name__ == '__main__':
-    files_to_check = scan_directory(
-        directory=r"C:\Programming Projects\pythonProject",
-        exclude=["venv", "tests"]
-    )
-    
-    for file_path in files_to_check:
-        file_content = read_file(file_path)
-        defined_functions = find_defined_functions(file_content)
+def find_func():
+    directory = r"C:\Programming Projects\pythonProject"  # Your directory here
+    exclude_dirs = ["venv", "tests"]  # Directories to exclude
+
+    try:
+        files_to_check = scan_directory(directory=directory, exclude=exclude_dirs)
         
-        if defined_functions:
-            print(f"Defined functions in '{file_path}': {', '.join(defined_functions)}")
-        else:
-            print(f"No defined functions found in '{file_path}'.")
+        for file_path in files_to_check:
+            file_content = read_file(file_path)
+            defined_functions = find_defined_functions(file_content)
+            
+            if defined_functions:
+                print(f"Defined functions in '{file_path}': {', '.join(defined_functions)}")
+            else:
+                print(f"No defined functions found in '{file_path}'.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+if __name__ == '__main__':
+    find_func()
             
             
     # python -m pytest

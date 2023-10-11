@@ -8,6 +8,7 @@ import threading
 IP = "127.0.0.1"
 PORT = 12345
 
+
 def generate_sine_function_coordinates(num_points: int):
     data = {}
     for num in range(num_points):
@@ -15,6 +16,7 @@ def generate_sine_function_coordinates(num_points: int):
         y = math.sin(x)
         data[x] = y
     return data
+
 
 def client_thread(client_id):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -26,10 +28,11 @@ def client_thread(client_id):
 
     for count in range(game_of_life.GENERATIONS):
         print(f"Client {client_id}, iteration = {count}")
-        time.sleep(0.1)
+        time.sleep(0.5)
         current_map = game_of_life.update_map(current_map)
         serialized_init_map = json.dumps(current_map)
         client_socket.send(serialized_init_map.encode("utf-8"))
+
 
 threads = []
 for client_id in range(3):
@@ -37,8 +40,11 @@ for client_id in range(3):
     threads.append(thread)
     thread.start()
 
+
+
 for thread in threads:
     thread.join()
+print("Complete")
 
 """
 
